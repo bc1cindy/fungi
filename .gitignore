@@ -1,2 +1,5 @@
 /result
 /result-*
+/mutants.out
+/mutants.out.old
+target/

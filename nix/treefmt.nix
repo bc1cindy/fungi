@@ -2,14 +2,40 @@
 {
   imports = [ inputs.treefmt-nix.flakeModule ];
 
-  perSystem = {
-    treefmt = {
-      projectRootFile = "flake.nix";
+  perSystem =
+    { pkgs, ... }:
+    let
+      cargo-sort = pkgs.writeShellApplication {
+        name = "treefmt-cargo-sort";
+        runtimeInputs = [ pkgs.cargo-sort ];
+        text = ''
+          for manifest in "$@"; do
+            cargo-sort "$(dirname "$manifest")"
+          done
+        '';
+      };
+    in
+    {
+      treefmt = {
+        projectRootFile = "flake.nix";
 
-      programs.nixfmt.enable = true;
-      programs.shellcheck.enable = true;
-      programs.shfmt.enable = true;
-      programs.yamlfmt.enable = true;
+        programs.nixfmt.enable = true;
+        programs.shellcheck.enable = true;
+        programs.shfmt.enable = true;
+        programs.taplo = {
+          enable = true;
+          priority = 1; # run after cargo-sort
+        };
+        programs.yamlfmt.enable = true;
+
+        settings.formatter.cargo-sort = {
+          command = cargo-sort;
+          priority = 0; # run before taplo
+          includes = [
+            "Cargo.toml"
+            "**/Cargo.toml"
+          ];
+        };
+      };
     };
-  };
 }
