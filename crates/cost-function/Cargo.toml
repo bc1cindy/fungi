@@ -1,0 +1,4 @@
+[package]
+name = "cost-function"
+edition.workspace = true
+version.workspace = true
