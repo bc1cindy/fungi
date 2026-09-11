@@ -10,7 +10,7 @@ futures-core = "0.3"
 futures-util = { version = "0.3", default-features = false }
 
 [dev-dependencies]
-tokio = { version = "1", features = ["macros", "rt", "sync"] }
+tokio = { version = "1", features = ["macros", "rt", "sync", "test-util"] }
 
 [lints]
 workspace = true

@@ -1,0 +1,6 @@
+# These conformance helpers are test infrastructure invoked by backend suites.
+# Replacing a helper body with `()` cannot be observed by a delegating test.
+exclude_globs = ["crates/transport-testkit/src/testkit.rs"]
+
+# Consumer workflows live in the contract crate and exercise the test backend.
+test_workspace = true

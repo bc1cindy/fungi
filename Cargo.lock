@@ -16,6 +16,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "fungi-transport-testkit"
+version = "0.0.0"
+dependencies = [
+ "fungi-transport",
+ "futures-util",
+ "tokio",
+]
+
+[[package]]
 name = "futures-core"
 version = "0.3.34"
 source = "registry+https://github.com/rust-lang/crates.io-index"
