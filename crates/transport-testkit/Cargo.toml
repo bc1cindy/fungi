@@ -1,0 +1,17 @@
+[package]
+name = "fungi-transport-testkit"
+description = "Reusable transport conformance checks for Fungi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+fungi-transport = { path = "../transport" }
+futures-util = { version = "0.3", default-features = false }
+tokio = { version = "1", features = ["sync", "time"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt", "test-util"] }
+
+[lints]
+workspace = true
