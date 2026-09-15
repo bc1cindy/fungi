@@ -1,6 +1,6 @@
 [package]
 name = "fungi-transport-testkit"
-description = "Reusable transport conformance checks for Fungi"
+description = "In-memory transport and reusable conformance checks for Fungi"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
